@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #slider {
+            max-width: 500px;
+            margin: auto;
+            position: relative;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Image Slider</h2>
+    <div id="slider">
+        <img id="sliderImage" src="" alt="Slider Image">
+    </div>
+    <button class="btn" onclick="prevImage()">Previous</button>
+    <button class="btn" onclick="nextImage()">Next</button>
+    
+    <script>
+        const images = [
+            "https://tse2.mm.bing.net/th?id=OIP.c4h1HQF9T3f-Au3FIlDDqQHaFj&pid=Api&P=0&h=180?text=Image+1",
+            "https://tse3.mm.bing.net/th?id=OIP.4BoYOYrHoeR9-IfbI1DoXgHaFj&pid=Api&P=0&h=180?text=Image+2",
+            "https://tse1.mm.bing.net/th?id=OIP.0lthXlnik5D1dcShrgi8twHaEw&pid=Api&P=0&h=180F?text=Image+3"
+        ];
+        
+        let currentIndex = 0;
+        
+        function updateImage() {
+            document.getElementById("sliderImage").src = images[currentIndex];
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        }
+        
+        // Initialize slider with first image
+        updateImage();
+    </script>
+</body>
+</html>
